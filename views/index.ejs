@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <% locals.title %>
+    </title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/1f6b45a08d.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="head-form">
+        <h1>My Contact List</h1>
+        <form action="/create-contact" method="post">
+            <input type="text" name="name" placeholder="Enter name">
+            <input type="number" name="phone" placeholder="Enter Phone">
+            <button type="submit">Add</button>
+        </form>
+    </div>
+
+    <div class="contact-list-container">
+        <ul>
+            <% for(let i of contact_list){ %>
+                <li class="contact">
+                    <div class="details">
+                        <p>
+                            <%= i.name %>
+                        </p>
+                        <p>
+                            <%= i.phone %>
+                        </p>
+                    </div>
+                    <div class="delete-button">
+                        <!-- link send will be like delete-contact/2323232 -->
+                        <a href="/delete-contact/?id=<%= i._id %> ">
+                            <i class="fas fa-times"></i>
+                        </a>
+
+                    </div>
+                </li>
+                <% } %>
+        </ul>
+    </div>
+
+
+
+</body>
+
+</html>
